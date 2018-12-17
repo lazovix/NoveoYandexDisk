@@ -56,7 +56,7 @@ export class DiskComponent implements OnInit {
         this.items = [];
         do {
             try {
-                const resource = await this.getResource('/' + this.path.join('/'), this.items.length, 3);
+                const resource = await this.getResource('/' + this.path.join('/'), this.items.length);
                 if (resource.path.slice(6) !== this.path.join('/')) {
                     break;
                 }
