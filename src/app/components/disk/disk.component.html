@@ -1,0 +1,26 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <ng-container *ngFor="let dir of ['disk'].concat(path); index as i; last as isLast">
+      <li class="breadcrumb-item" [class.active]="isLast">
+        <a *ngIf="!isLast" [routerLink]="['/disk'].concat(path).slice(0, i + 1)">{{ dir }}</a>
+        <ng-container *ngIf="isLast">{{ dir }}</ng-container>
+      </li>
+    </ng-container>
+  </ol>
+</nav>
+<ul class="list-group">
+  <li class="list-group-item" *ngIf="path.length">
+    <i class="fas fa-folder" style="padding-right: .75rem; color: orange;"></i>
+    <a routerLink="/disk/{{path.slice(0, -1).join('/')}}">...</a>
+  </li>
+  <ng-container *ngFor="let item of items">
+    <li class="list-group-item" *ngIf="item.type === 'dir'">
+      <i class="fas fa-folder" style="padding-right: .75rem; color: orange;"></i>
+      <a routerLink="/disk{{item.path.slice(5)}}">{{item.name}}</a>
+    </li>
+    <li class="list-group-item" *ngIf="item.type === 'file'">
+      <span>{{item.name}}</span>
+      <span class="float-right">{{item.size}}</span>
+    </li>
+  </ng-container>
+</ul>

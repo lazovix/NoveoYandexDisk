@@ -1,0 +1,6 @@
+<ng-container *ngIf="error">
+  <div class="alert alert-danger" role="alert">
+    {{error_description}}
+  </div>
+  <button type="button" class="btn btn-primary btn-lg btn-block" (click)="authorize()">Повторить</button>
+</ng-container>
